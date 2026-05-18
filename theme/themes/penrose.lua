@@ -12,42 +12,51 @@ return {
   },
 
   fonts = {
-    ui = "JetBrainsMono Nerd Font",
-    mono = "JetBrainsMono Nerd Font Mono",
-    size = 10,
-    bar_size = 10,
-    terminal_size = 11,
+	ui = "Inconsolata Nerd Font Mono",
+    	mono = "Inconsolata Nerd Font Mono",
+    	size = 10,
+    	bar_size = 10,
+    	terminal_size = 11,
   },
 
   colors = {
-    bg       = "#202833",
-    bg_alt   = "#28313d",
-    bg_soft  = "#323c49",
-    bg_float = "#242c36",
+  	-- Base
+ 	bg       = "#2e3440",
+  	bg_alt   = "#3b4252",
+  	bg_soft  = "#434c5e",
+  	bg_float = "#242933",
 
-    fg       = "#d8dee9",
-    fg_alt   = "#c6d0dc",
-    muted    = "#7f8b99",
+  	-- Text
+  	fg       = "#eceff4",
+  	fg_alt   = "#d8dee9",
+  	muted    = "#4c566a",
 
-    accent     = "#8fbac8",
-    accent_alt = "#a7c7d3",
+  	-- Accents
+  	accent     = "#88c0d0",
+  	accent_alt = "#81a1c1",
+  	secondary  = "#81a1c1",
 
-    border    = "#8fbac8",
-    selection = "#394653",
+  	-- UI states
+  	border    = "#88c0d0",
+  	selection = "#434c5e",
+  	disabled  = "#3b4252",
 
-    black   = "#202833",
-    red     = "#bf616a",
-    green   = "#a3be8c",
-    yellow  = "#ebcb8b",
-    blue    = "#81a1c1",
-    magenta = "#b48ead",
-    cyan    = "#8fbcbb",
-    white   = "#eceff4",
+  	-- Terminal palette 
+  	black   = "#2e3440",
+ 	red     = "#bf616a",
+  	green   = "#a3be8c",
+  	yellow  = "#ebcb8b",
+  	blue    = "#81a1c1",
+  	magenta = "#b48ead",
+  	cyan    = "#88c0d0",
+  	white   = "#eceff4",
 
-    urgent  = "#bf616a",
-    warning = "#ebcb8b",
-    success = "#a3be8c",
-  },
+  	-- Named semantic colors
+  	urgent  = "#bf616a",
+  	warning = "#ebcb8b",
+  	success = "#a3be8c",
+  	alert   = "#b48ead",
+  }, 
 
   wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/test.png",
 
@@ -63,6 +72,14 @@ return {
     border_radius = 0,
     border_width = 1,
   },
+
+	polybar = {
+  		height = 25,
+  		offset_x = 5,
+  		offset_y = 5,
+  		width = "99.3%",
+  		radius = 0,
+	},
 
   workspaces = {
     { key = "1", name = "1:web" },

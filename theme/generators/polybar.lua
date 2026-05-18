@@ -9,111 +9,150 @@ local function generate(theme)
 background = %s
 background-alt = %s
 foreground = %s
-foreground-alt = %s
-muted = %s
-accent = %s
-urgent = %s
-warning = %s
-success = %s
+primary = %s
+secondary = %s
+alert = %s
+disabled = %s
 
 [bar/main]
-width = 100%%
-height = 24
-radius = 0
+width = %s
+height = %d
+offset-x = %d
+offset-y = %d
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = ${colors.accent}
+radius = %d
+line-size = 3
 
-border-size = 0
 padding-left = 2
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
-font-0 = %s:size=%d;2
+separator = |
+separator-foreground = ${colors.disabled}
 
-modules-left = i3
-modules-center = date
-modules-right = pulseaudio memory cpu
+font-0 = "%s:size=%d;2"
+font-1 = "%s:size=%d:weight=bold;2"
+
+modules-left = i3 pulseaudio
+modules-center = datetime
+modules-right = memory cpu
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+enable-ipc = true
+override-redirect = true
 wm-restack = i3
-override-redirect = false
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+enable-click = true
+enable-scroll = true
+wrapping-scroll = true
+
+label-mode = %%mode%%
+label-mode-padding = 1
+label-mode-background = ${colors.alert}
 
 label-focused = %%name%%
-label-focused-background = ${colors.accent}
 label-focused-foreground = ${colors.background}
-label-focused-padding = 2
+label-focused-background = ${colors.primary}
+label-focused-padding = 3
 
 label-unfocused = %%name%%
-label-unfocused-foreground = ${colors.foreground-alt}
-label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding = 3
 
 label-visible = %%name%%
-label-visible-foreground = ${colors.accent}
-label-visible-padding = 2
+label-visible-foreground = ${colors.primary}
+label-visible-padding = 3
 
 label-urgent = %%name%%
-label-urgent-background = ${colors.urgent}
 label-urgent-foreground = ${colors.background}
-label-urgent-padding = 2
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = %%a %%b %%d
-time = %%I:%%M %%p
-
-label = %%date%%  %%time%%
-label-foreground = ${colors.accent}
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = CPU %%percentage%%%%
-label-foreground = ${colors.foreground-alt}
-
-[module/memory]
-type = internal/memory
-interval = 2
-label = RAM %%percentage_used%%%%
-label-foreground = ${colors.foreground-alt}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 3
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = VOL <label-volume>
+format-volume-foreground = ${colors.primary}
+
 label-volume = %%percentage%%%%
-format-volume-foreground = ${colors.foreground-alt}
 
 label-muted = muted
-label-muted-foreground = ${colors.muted}
+label-muted-foreground = ${colors.disabled}
+
+click-right = pavucontrol
+
+[module/datetime]
+type = internal/date
+interval = 1.0
+
+date = %%A, %%B %%d %%Y
+time = %%H:%%M
+
+format = <label>
+label = " %%date%%  %%time%% "
+label-background = ${colors.primary}
+label-foreground = ${colors.background}
+label-padding-left = 2
+label-padding-right = 2
+label-alignment = center
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.primary}
+label = %%percentage_used:2%%%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %%percentage:2%%%%
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = false
+
+[global/wm]
+margin-top = %d
+margin-bottom = 5
+
+; vim:ft=dosini
 ]],
     theme.colors.bg,
-    theme.colors.bg_alt,
-    theme.colors.fg,
-    theme.colors.fg_alt,
-    theme.colors.muted,
     theme.colors.accent,
-    theme.colors.urgent,
-    theme.colors.warning,
-    theme.colors.success,
+    theme.colors.fg,
+    theme.colors.accent,
+    theme.colors.secondary,
+    theme.colors.alert,
+    theme.colors.disabled,
+
+    theme.polybar.width,
+    theme.polybar.height,
+    theme.polybar.offset_x,
+    theme.polybar.offset_y,
+    theme.polybar.radius,
+
     theme.fonts.ui,
-    theme.fonts.bar_size
+    theme.fonts.bar_size,
+    theme.fonts.ui,
+    theme.fonts.bar_size,
+
+    theme.polybar.offset_y
   )
 end
 

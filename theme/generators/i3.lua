@@ -45,9 +45,15 @@ local function generate(theme)
   line("# Gaps / borders")
   line("default_border pixel " .. theme.i3.border_width)
   line("default_floating_border pixel " .. theme.i3.border_width)
+  line("for_window [class=\".*\"] border pixel " .. theme.i3.border_width)
   line("gaps inner " .. theme.i3.gaps_inner)
   line("gaps outer " .. theme.i3.gaps_outer)
+  line("gaps top " .. (theme.polybar.height + theme.polybar.offset_y + 5))
   line()
+
+  --line("# App-specific borders")
+  --line("for_window [class=\"(?i)ghostty\"] border pixel " .. theme.i3.border_width)
+  --line()
 
   line("# Window colors")
   line("client.focused          " ..
@@ -59,19 +65,19 @@ local function generate(theme)
   )
 
   line("client.focused_inactive " ..
-    theme.colors.bg_alt .. " " ..
-    theme.colors.bg_alt .. " " ..
-    theme.colors.fg_alt .. " " ..
-    theme.colors.bg_alt .. " " ..
-    theme.colors.bg_alt
-  )
-
-  line("client.unfocused        " ..
-    theme.colors.bg_alt .. " " ..
-    theme.colors.bg_alt .. " " ..
     theme.colors.muted .. " " ..
-    theme.colors.bg_alt .. " " ..
-    theme.colors.bg_alt
+    theme.colors.disabled .. " " ..
+    theme.colors.fg_alt .. " " ..
+    theme.colors.disabled .. " " ..
+    theme.colors.disabled
+  )
+  
+  line("client.unfocused        " ..
+    theme.colors.muted .. " " ..
+    theme.colors.disabled .. " " ..
+    theme.colors.fg_alt .. " " ..
+    theme.colors.disabled .. " " ..
+    theme.colors.disabled
   )
 
   line("client.urgent           " ..
@@ -81,6 +87,9 @@ local function generate(theme)
     theme.colors.urgent .. " " ..
     theme.colors.urgent
   )
+
+  line("client.background       " .. theme.colors.bg)
+
   line()
 
   line("# Launch / close")
