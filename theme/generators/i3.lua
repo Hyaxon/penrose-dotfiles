@@ -124,19 +124,19 @@ local function generate(theme)
 
   line("# Workspaces")
   for _, ws in ipairs(theme.workspaces) do
-    line("set $" .. ws.var .. " \"" .. ws.name .. "\"")
+    line("set $ws" .. ws.key .. " \"" .. ws.name .. "\"")
   end
 
   line()
 
   for _, ws in ipairs(theme.workspaces) do
-    line("bindsym $mod+" .. ws.key .. " workspace number $" .. ws.var)
+    line("bindsym $mod+" .. ws.key .. " workspace number $ws" .. ws.key)
   end
 
   line()
 
   for _, ws in ipairs(theme.workspaces) do
-    line("bindsym $mod+Shift+" .. ws.key .. " move container to workspace number $" .. ws.var)
+    line("bindsym $mod+Shift+" .. ws.key .. " move container to workspace number $ws" .. ws.key)
   end
 
   line()
