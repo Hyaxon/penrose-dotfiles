@@ -20,6 +20,16 @@ local generators = {
     module = "generators.rofi",
     output = repo .. "/generated/rofi/config.rasi",
   },
+  {
+	  name = "feh", 
+	  module = "generators.feh",
+	  output = repo .. "/generated/desktop/wallpaper.sh",
+  },
+  {
+	  name = "polybar",
+	  module = "generators.polybar",
+	  output = repo .. "/generated/polybar/config.ini",
+  }, 
 }
 
 local function mkdir_p(path)

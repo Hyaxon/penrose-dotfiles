@@ -49,7 +49,7 @@ return {
     success = "#a3be8c",
   },
 
-  wallpaper = os.getenv("HOME") .. "/dev/dotfiles/wallpapers/test.png",
+  wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/test.png",
 
   i3 = {
     mod = "Mod4",

@@ -1,4 +1,4 @@
-.PHONY: build check apply reload-i3
+.PHONY: build check apply reload-i3 wallpaper restart-polybar
 
 build:
 	cd theme && lua build.lua
@@ -9,4 +9,12 @@ check: build
 reload-i3:
 	i3-msg reload
 
-apply: build check reload-i3
+wallpaper:
+	chmod +x generated/desktop/wallpaper.sh
+	./generated/desktop/wallpaper.sh
+
+restart-polybar:
+	chmod +x config/polybar/launch.sh
+	~/.config/polybar/launch.sh
+
+apply: build check wallpaper reload-i3 restart-polybar
