@@ -33,7 +33,7 @@ local function generated_header(style)
 		return table.concat({
 			"; " .. lines[1], 
 			"; " .. lines[2],
-			": " .. lines[3], 
+			"; " .. lines[3], 
 		}, "\n") .. "\n\n"
 	end 
 	if style == "css" then 

@@ -13,6 +13,11 @@ local files = {
 		output = "../generated/i3/config",
 		comment_style = "hash",
 	},
+	{
+		template = "../config/polybar/config.ini.template",
+		output = "../generated/polybar/config.ini",
+		comment_style = "semicolon",
+	}, 
 }
 
 --[[local generators = {

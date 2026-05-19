@@ -1,23 +1,23 @@
 [colors]
-background = %s
-background-alt = %s
-foreground = %s
-primary = %s
-secondary = %s
-alert = %s
-disabled = %s
+background = {{colors.bg}}
+background-alt = {{colors.accent}}
+foreground = {{colors.fg}}
+primary = {{colors.accent}}
+secondary = {{colors.secondary}}
+alert = {{colors.alert}}
+disabled = {{colors.disabled}}
 
 [bar/main]
-width = %s
-height = %d
-offset-x = %d
-offset-y = %d
+width = {{polybar.width}}
+height = {{polybar.height}}
+offset-x = {{polybar.offset_x}}
+offset-y = {{polybar.offset_y}}
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-radius = %d
+radius = {{polybar.radius}}
 line-size = 3
 
 padding-left = 2
@@ -29,8 +29,8 @@ module-margin-right = 2
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = "%s:size=%d;2"
-font-1 = "%s:size=%d:weight=bold;2"
+font-0 = "{{fonts.ui}}:size={{fonts.bar_size}};2"
+font-1 = "{{fonts.ui}}:size={{fonts.bar_size}}:weight=bold;2"
 
 modules-left = i3 
 modules-center = datetime
@@ -50,24 +50,24 @@ enable-click = true
 enable-scroll = true
 wrapping-scroll = true
 
-label-mode = %%mode%%
+label-mode = %mode%
 label-mode-padding = 1
 label-mode-background = ${colors.alert}
 
-label-focused = %%name%%
+label-focused = %name%
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.primary}
 label-focused-padding = 2
 
-label-unfocused = %%name%%
+label-unfocused = %name%
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 2
 
-label-visible = %%name%%
+label-visible = %name%
 label-visible-foreground = ${colors.primary}
 label-visible-padding = 2
 
-label-urgent = %%name%%
+label-urgent = %name%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
@@ -78,7 +78,7 @@ type = internal/pulseaudio
 format-volume = VOL <label-volume>
 format-volume-foreground = ${colors.primary}
 
-label-volume = %%percentage%%%%
+label-volume = %percentage%%
 
 label-muted = muted
 label-muted-foreground = ${colors.disabled}
@@ -89,11 +89,11 @@ click-right = pavucontrol
 type = internal/date
 interval = 1.0
 
-date = %%A, %%B %%d %%Y
-time = %%H:%%M
+date = %A, %B %d %Y
+time = %H:%M
 
 format = <label>
-label = " %%date%%  %%time%% "
+label = " %date%  %time% "
 label-background = ${colors.primary}
 label-foreground = ${colors.background}
 label-padding-left = 2
@@ -106,7 +106,7 @@ interval = 2
 
 format-prefix = "RAM "
 format-prefix-foreground = ${colors.primary}
-label = %%percentage_used:2%%%%
+label = %percentage_used:2%%
 
 [module/cpu]
 type = internal/cpu
@@ -114,7 +114,7 @@ interval = 2
 
 format-prefix = "CPU "
 format-prefix-foreground = ${colors.primary}
-label = %%percentage:2%%%%
+label = %percentage:2%%
 
 [module/temperature]
 type = internal/temperature
@@ -124,10 +124,10 @@ warn-temperature = 80
 format = <label>
 format-warn = <label-warn>
 
-label = TEMP %%temperature-c%%
+label = TEMP %temperature-c%
 label-foreground = ${colors.foreground}
 
-label-warn = TEMP %%temperature-c%%
+label-warn = TEMP %temperature-c%
 label-warn-foreground = ${colors.alert}
 
 [settings]
@@ -135,30 +135,5 @@ screenchange-reload = true
 pseudo-transparency = false
 
 [global/wm]
-margin-top = %d
+margin-top = {{polybar.offset_y}}
 margin-bottom = 5
-
-; vim:ft=dosini
-]],
-    theme.colors.bg,
-    theme.colors.accent,
-    theme.colors.fg,
-    theme.colors.accent,
-    theme.colors.secondary,
-    theme.colors.alert,
-    theme.colors.disabled,
-
-    theme.polybar.width,
-    theme.polybar.height,
-    theme.polybar.offset_x,
-    theme.polybar.offset_y,
-    theme.polybar.radius,
-
-    theme.fonts.ui,
-    theme.fonts.bar_size,
-    theme.fonts.ui,
-    theme.fonts.bar_size,
-
-    theme.polybar.offset_y
-)
-
