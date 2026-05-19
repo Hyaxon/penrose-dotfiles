@@ -14,44 +14,21 @@ local files = {
 		comment_style = "hash",
 	},
 	{
-		template = "../config/polybar/config.ini.template",
+		template = "../config/polybar/config.template.ini",
 		output = "../generated/polybar/config.ini",
 		comment_style = "semicolon",
 	},
 	{
-		template = "../config/rofi/config.rasi.template",
+		template = "../config/rofi/config.template.rasi",
 		output = "../generated/rofi/config.rasi",
 		comment_style = "css", 
 	},
 	{
-		template = "../config/desktop/wallpaper.sh.template",
+		template = "../config/desktop/wallpaper.template.sh",
 		output = "../generated/desktop/wallpaper.sh",
 		comment_style = "hash", 
 	},
 }
-
---[[local generators = {
-  {
-    name = "i3",
-    module = "generators.i3",
-    output = repo .. "/generated/i3/config",
-  },
-  {
-    name = "rofi",
-    module = "generators.rofi",
-    output = repo .. "/generated/rofi/config.rasi",
-  },
-  {
-	  name = "feh", 
-	  module = "generators.feh",
-	  output = repo .. "/generated/desktop/wallpaper.sh",
-  },
-  {
-	  name = "polybar",
-	  module = "generators.polybar",
-	  output = repo .. "/generated/polybar/config.ini",
-  }, 
-}]] 
 
 local function mkdir_p(path)
   os.execute(string.format("mkdir -p %q", path))
@@ -83,11 +60,3 @@ for _, file in ipairs(files) do
 	write_file(file.output, output)
 	print("generated " .. file.template .. " -> " .. file.output)
 end 
-
---[[for _, gen in ipairs(generators) do
-  local generate = require(gen.module)
-  local content = generate(theme)
-
-  write_file(gen.output, content)
-  print("generated " .. gen.name .. " -> " .. gen.output)
-end]]
