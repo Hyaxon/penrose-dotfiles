@@ -1,6 +1,6 @@
 # penrose-dotfiles
 
-Personal Linux dotfiles for an i3-based desktop using a multiple themes.
+Personal Linux dotfiles for an i3-based desktop with a Lua-powered theme/template system.
 
 ## Stack
 
@@ -17,18 +17,32 @@ Personal Linux dotfiles for an i3-based desktop using a multiple themes.
 
 ```text
 .
-├── config/        # Hand-written configs and scripts
-├── generated/     # Generated config output
-├── theme/         # Lua theme system
-│   ├── build.lua
-│   ├── generators/
-│   └── themes/
-├── wallpapers/    # Wallpaper assets
-├── install.sh     # Symlink setup
-└── Makefile       # Build/apply commands
+├── config/         # Editable source templates and hand-written scripts
+│   ├── desktop/    # Wallpaper script template
+│   ├── i3/         # i3 config template
+│   ├── polybar/    # Polybar template and launch script
+│   └── rofi/       # Rofi theme/config template
+├── generated/      # Generated config output; do not edit directly
+│   ├── desktop/
+│   ├── i3/
+│   ├── polybar/
+│   └── rofi/
+├── theme/          # Lua theme system
+│   ├── build.lua   # Build entry point
+│   ├── render.lua  # Template renderer
+│   └── themes/     # Theme definitions
+├── wallpapers/     # Wallpaper assets
+├── install.sh      # Symlink setup
+└── Makefile        # Build/apply commands
 ```
 
 ## Theme System
+
+Themes are defined in:
+
+```text
+theme/themes/
+```
 
 The main theme is defined in:
 
@@ -36,10 +50,16 @@ The main theme is defined in:
 theme/themes/penrose.lua
 ```
 
-Generators are stored in:
+The active theme is selected in:
 
 ```text
-theme/generators/
+theme/build.lua
+```
+
+Templates are stored in:
+
+```text
+config/
 ```
 
 Generated configs are written to:
@@ -48,7 +68,16 @@ Generated configs are written to:
 generated/
 ```
 
-Do not edit files inside `generated/` directly. Edit the theme or generator files instead.
+The renderer replaces template placeholders like:
+
+```text
+{{colors.bg}}
+{{fonts.ui}}
+{{i3.gaps_inner}}
+{{generated.i3.workspaces.define}}
+```
+
+Do not edit files inside `generated/` directly. They are overwritten by the build process. Edit files in `config/` or `theme/themes/` instead.
 
 ## Important Commands
 
@@ -98,10 +127,13 @@ Then apply changes:
 make apply
 ```
 
-Edit a generator:
+Edit a source template:
 
 ```bash
-nvim theme/generators/polybar.lua
+nvim config/i3/config.template
+nvim config/polybar/config.template.ini
+nvim config/rofi/config.template.rasi
+nvim config/desktop/wallpaper.template.sh
 ```
 
 Then rebuild/apply:
@@ -112,13 +144,9 @@ make apply
 
 ## Notes
 
-- To change theme edit `theme/build.lua`'s module requirement. 
+- `config/` contains editable templates and hand-written scripts.
 - `generated/` files are machine-generated.
-- `config/` contains hand-written scripts and configs.
-- Polybar scripts live in:
-
-```text
-config/polybar/scripts/
-```
-
+- `theme/themes/` contains theme definitions.
+- `theme/render.lua` handles placeholder replacement, computed values, and generated blocks.
 - Inspired by [srchby's i3 rice](https://github.com/srchby/dotfiles) 
+

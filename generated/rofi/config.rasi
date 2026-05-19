@@ -5,11 +5,11 @@
  */
 
 * {
-  bg: #2e3440;
-  bg-alt: #3b4252;
-  fg: #eceff4;
-  muted: #4c566a;
-  accent: #88c0d0;
+  bg: #0B111C;
+  bg-alt: #111B2A;
+  fg: #D8E3F0;
+  muted: #61748D;
+  accent: #D7193F;
   font: "Inconsolata Nerd Font Mono 10";
 }
 
