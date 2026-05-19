@@ -121,3 +121,4 @@ make apply
 config/polybar/scripts/
 ```
 
+- Inspired by [srchby's i3 rice](https://github.com/srchby/dotfiles) 
