@@ -39,9 +39,9 @@ separator-foreground = ${colors.disabled}
 font-0 = "%s:size=%d;2"
 font-1 = "%s:size=%d:weight=bold;2"
 
-modules-left = i3 pulseaudio
+modules-left = i3 
 modules-center = datetime
-modules-right = memory cpu
+modules-right = pulseaudio memory cpu temperature
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -64,20 +64,20 @@ label-mode-background = ${colors.alert}
 label-focused = %%name%%
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.primary}
-label-focused-padding = 3
+label-focused-padding = 2
 
 label-unfocused = %%name%%
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-padding = 3
+label-unfocused-padding = 2
 
 label-visible = %%name%%
 label-visible-foreground = ${colors.primary}
-label-visible-padding = 3
+label-visible-padding = 2
 
 label-urgent = %%name%%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 3
+label-urgent-padding = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -122,6 +122,20 @@ interval = 2
 format-prefix = "CPU "
 format-prefix-foreground = ${colors.primary}
 label = %%percentage:2%%%%
+
+[module/temperature]
+type = internal/temperature
+interval = 2
+warn-temperature = 80
+
+format = <label>
+format-warn = <label-warn>
+
+label = TEMP %%temperature-c%%
+label-foreground = ${colors.foreground}
+
+label-warn = TEMP %%temperature-c%%
+label-warn-foreground = ${colors.alert}
 
 [settings]
 screenchange-reload = true

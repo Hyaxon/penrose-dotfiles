@@ -26,6 +26,7 @@ window {
 mainbox {
   background-color: @bg;
   padding: 14px;
+  border: 0px;
 }
 
 inputbar {
@@ -34,14 +35,7 @@ inputbar {
   border-radius: %dpx;
   padding: 10px;
   margin: 0 0 12px 0;
-}
-
-prompt {
-  text-color: @accent;
-}
-
-entry {
-  text-color: @fg;
+  border: 0px;
 }
 
 listview {
@@ -49,21 +43,46 @@ listview {
   lines: 8;
   columns: 1;
   spacing: 6px;
+  border: 0px;
 }
 
-element {
+prompt {
   background-color: transparent;
+  text-color: @accent;
+}
+
+entry {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element normal.normal {
+  background-color: @bg-alt;
   text-color: @fg;
   border-radius: %dpx;
   padding: 8px;
 }
 
-element selected {
+element alternate.normal {
+  background-color: @bg-alt;
+  text-color: @fg;
+  border-radius: %dpx;
+  padding: 8px;
+}
+
+element selected.normal {
   background-color: @accent;
   text-color: @bg;
+  border-radius: %dpx;
+  padding: 8px;
 }
 
 element-text {
+  background-color: transparent;
+  text-color: inherit;
+}
+
+element-icon {
   background-color: transparent;
   text-color: inherit;
 }
@@ -77,6 +96,8 @@ element-text {
     theme.fonts.size,
     theme.rofi.width,
     theme.rofi.border_width,
+    theme.rofi.border_radius,
+    theme.rofi.border_radius,
     theme.rofi.border_radius,
     theme.rofi.border_radius,
     theme.rofi.border_radius
