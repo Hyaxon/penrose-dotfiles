@@ -7,7 +7,7 @@ package.path = package.path .. ";./?.lua;./?/init.lua"
 local repo = os.getenv("HOME") .. "/Dev/penrose_dotfiles"
 
 local themes = repo .. "/theme/themes"
-local theme = require("themes.penrose")
+local theme = require("themes.juggernaut") -- CHANGE HERE TO APPLY NEW THEME
 
 local generators = {
   {

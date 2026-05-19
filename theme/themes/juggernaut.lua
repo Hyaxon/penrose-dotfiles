@@ -1,9 +1,7 @@
--- theme/penrose.lua
-
--- TODO: Add cursor changes, file manager, system ui, terminal configuration. fastfetch, piccom
+-- theme/juggernaut.lua
 
 return {
-	name = "penrose",
+	name = "juggernaut",
 
 	apps = {
 		terminal = "ghostty",
@@ -23,44 +21,44 @@ return {
 
 	colors = {
 		-- Base
-		bg       = "#0B111C",
-		bg_alt   = "#111B2A",
-		bg_soft  = "#1B2B42",
-		bg_float = "#080D15",
+		bg       = "#151515",
+		bg_alt   = "#252C28",
+		bg_soft  = "#445048",
+		bg_float = "#151515",
 
 		-- Text
-		fg       = "#D8E3F0",
-		fg_alt   = "#AFC0D4",
-		muted    = "#61748D",
+		fg       = "#D3DAD5",
+		fg_alt   = "#9BAAA0",
+		muted    = "#67796D",
 
 		-- Accents
-		accent     = "#D7193F",
-		accent_alt = "#8E102A",
-		secondary  = "#5F7FA8",
+		accent     = "#D3DAD5",
+		accent_alt = "#9BAAA0",
+		secondary  = "#67796D",
 
 		-- UI states
-		border    = "#88c0d0",
-		selection = "#D7193F",
-		disabled  = "#61748D",
+		border    = "#9BAAA0",
+		selection = "#D3DAD5",
+		disabled  = "#445048",
 
 		-- Terminal palette
-		black   = "#0B111C",
-		red     = "#D7193F",
-		green   = "#7D8F86",
-		yellow  = "#C8A06A",
-		blue    = "#5F7FA8",
-		magenta = "#A84B65",
-		cyan    = "#8FB6D8",
-		white   = "#D8E3F0",
+		black   = "#151515",
+		red     = "#9BAAA0",
+		green   = "#9BAAA0",
+		yellow  = "#D3DAD5",
+		blue    = "#67796D",
+		magenta = "#9BAAA0",
+		cyan    = "#9BAAA0",
+		white   = "#D3DAD5",
 
 		-- Named semantic colors
-		urgent  = "#D7193F",
-		warning = "#C8A06A",
-		success = "#7D8F86",
-		alert   = "#A84B65",
+		urgent  = "#D3DAD5",
+		warning = "#9BAAA0",
+		success = "#9BAAA0",
+		alert   = "#67796D",
 	},
 
-	wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/eighty_six_red.png",
+	wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/eighty_six_ruins.png",
 
 	i3 = {
 		mod = "Mod4",

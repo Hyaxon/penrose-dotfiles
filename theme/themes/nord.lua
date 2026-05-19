@@ -1,4 +1,4 @@
--- theme/penrose.lua
+-- theme/nord.lua
 
 return {
   	name = "nord",
@@ -58,7 +58,7 @@ return {
 		alert   = "#b48ead",
   	}, 
 
-  	wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/test.png",
+  	wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/fuji_lawson.png",
 
   	i3 = {
     	mod = "Mod4",
