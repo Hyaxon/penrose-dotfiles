@@ -11,6 +11,7 @@ local files = {
 	{
 		template = "../config/i3/config.template",
 		output = "../generated/i3/config",
+		comment_style = "hash",
 	},
 }
 
@@ -62,7 +63,7 @@ end
 
 for _, file in ipairs(files) do 
 	local template = read_file(file.template)
-	local output = render_template(template, theme)
+	local output = render_template(template, theme, file.comment_style)
 
 	write_file(file.output, output)
 	print("generated " .. file.template .. " -> " .. file.output)
