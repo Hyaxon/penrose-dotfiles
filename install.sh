@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-DOTFILES="$HOME/Dev/penrose_dotfiles"
+DOTFILES="$HOME/Dev/penrose-dotfiles"
 
 mkdir -p "$HOME/.config/i3"
 mkdir -p "$HOME/.config/rofi"

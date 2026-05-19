@@ -1,4 +1,4 @@
-# penrose_dotfiles
+# penrose-dotfiles
 
 Personal Linux dotfiles for an i3-based desktop using a multiple themes.
 

@@ -3,7 +3,7 @@
 package.path = package.path .. ";./?.lua;./?/init.lua"
 
 local theme = require("themes.penrose") -- Change Theme
-local repo = os.getenv("HOME") .. "/Dev/penrose_dotfiles" -- Change directory path
+local repo = os.getenv("HOME") .. "/Dev/penrose-dotfiles" -- Change directory path
 
 local render_template = require("render")
 

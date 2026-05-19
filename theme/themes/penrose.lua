@@ -60,7 +60,7 @@ return {
 		alert   = "#A84B65",
 	},
 
-	wallpaper = os.getenv("HOME") .. "/Dev/penrose_dotfiles/wallpapers/eighty_six_red.png",
+	wallpaper = os.getenv("HOME") .. "/Dev/penrose-dotfiles/wallpapers/eighty_six_red.png",
 
 	i3 = {
 		mod = "Mod4",
