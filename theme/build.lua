@@ -2,14 +2,19 @@
 
 package.path = package.path .. ";./?.lua;./?/init.lua"
 
--- local theme = require("penrose")
+local theme = require("themes.penrose") -- Change Theme
+local repo = os.getenv("HOME") .. "/Dev/penrose_dotfiles" -- Change directory path
 
-local repo = os.getenv("HOME") .. "/Dev/penrose_dotfiles"
+local render_template = require("render")
 
-local themes = repo .. "/theme/themes"
-local theme = require("themes.juggernaut") -- CHANGE HERE TO APPLY NEW THEME
+local files = {
+	{
+		template = "../config/i3/config.template",
+		output = "../generated/i3/config",
+	},
+}
 
-local generators = {
+--[[local generators = {
   {
     name = "i3",
     module = "generators.i3",
@@ -30,7 +35,7 @@ local generators = {
 	  module = "generators.polybar",
 	  output = repo .. "/generated/polybar/config.ini",
   }, 
-}
+}]] 
 
 local function mkdir_p(path)
   os.execute(string.format("mkdir -p %q", path))
@@ -40,6 +45,13 @@ local function dirname(path)
   return path:match("(.+)/[^/]+$")
 end
 
+local function read_file(path)
+	local file = assert(io.open(path, "r"))
+	local content = file:read("*a")
+	file:close()
+	return content 
+end 
+
 local function write_file(path, content)
   mkdir_p(dirname(path))
 
@@ -48,10 +60,18 @@ local function write_file(path, content)
   file:close()
 end
 
-for _, gen in ipairs(generators) do
+for _, file in ipairs(files) do 
+	local template = read_file(file.template)
+	local output = render_template(template, theme)
+
+	write_file(file.output, output)
+	print("generated " .. file.template .. " -> " .. file.output)
+end 
+
+--[[for _, gen in ipairs(generators) do
   local generate = require(gen.module)
   local content = generate(theme)
 
   write_file(gen.output, content)
   print("generated " .. gen.name .. " -> " .. gen.output)
-end
+end]]

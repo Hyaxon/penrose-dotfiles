@@ -1,0 +1,56 @@
+-- theme/render.lua
+
+local function get_path(tbl, path)
+	local value = tbl 
+
+	for key in path:gmatch("[^.]+") do
+		value = value[key]
+
+		if value == nil then
+			error("Missing template value: " .. path)
+		end 
+	end 
+
+	return tostring(value) 
+end 
+
+local function generate_i3_workspaces(theme)
+	local define = {}
+	local switch = {}
+	local move = {}
+
+	for _, ws in ipairs(theme.workspaces) do
+		table.insert(define, "set $ws" .. ws.key .. " \"" .. ws.name .. "\"")
+		table.insert(switch, "bindsym $mod+" .. ws.key .. " workspace number $ws" .. ws.key)
+		table.insert(move, "bindsym $mod+Shift+" .. ws.key .. " move container to workspace number $ws" .. ws.key)
+	end 
+
+	return {
+		define = table.concat(define, "\n"),
+		switch = table.concat(switch, "\n"),
+		move = table.concat(move, "\n"),
+	}
+end 
+
+local function prepare_theme(theme)
+	theme.computed = theme.computed or {}
+	theme.generated = theme.generated or {}
+
+	theme.computed.i3_top_gap = theme.polybar.height + theme.polybar.offset_y + 5 
+
+	theme.generated.i3 = {
+		workspaces = generate_i3_workspaces(theme), 
+	}
+
+	return theme 
+end 
+
+local function render_template(template, theme)
+	theme = prepare_theme(theme)
+
+	return template:gsub("{{([%w%._]+)}}", function(path)
+		return get_path(theme, path)
+	end)
+end 
+
+return render_template
