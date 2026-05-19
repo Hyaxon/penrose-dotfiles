@@ -49,6 +49,18 @@ local function generated_header(style)
 	error("Unknown comment style: " .. tostring(style))
 end 
 
+local function add_generated_header(rendered, comment_style)
+        local header = generated_header(comment_style)
+
+        local shebang = rendered:match("^(#![^\n]*\n)")
+        if shebang then
+                local rest = rendered:sub(#shebang + 1)
+                return shebang .. "\n" .. header .. rest
+        end
+
+        return header .. rendered
+end
+
 local function generate_i3_workspaces(theme)
 	local define = {}
 	local switch = {}
@@ -87,7 +99,7 @@ local function render_template(template, theme, comment_style)
 		return get_path(theme, path)
 	end)
 	
-	return generated_header(comment_style) .. rendered
+	return add_generated_header(rendered, comment_style)
 end 
 
 return render_template

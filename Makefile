@@ -3,6 +3,9 @@
 build:
 	cd theme && lua build.lua
 
+install: 
+	./install.sh
+
 check: build
 	i3 -C -c generated/i3/config
 
@@ -17,4 +20,4 @@ restart-polybar:
 	chmod +x config/polybar/launch.sh
 	~/.config/polybar/launch.sh
 
-apply: build check wallpaper reload-i3 restart-polybar
+apply: build install check wallpaper reload-i3 restart-polybar

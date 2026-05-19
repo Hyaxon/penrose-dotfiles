@@ -2,7 +2,7 @@
 
 package.path = package.path .. ";./?.lua;./?/init.lua"
 
-local theme = require("themes.penrose") -- Change Theme
+local theme = require("themes.nord") -- Change Theme
 local repo = os.getenv("HOME") .. "/Dev/penrose-dotfiles" -- Change directory path
 
 local render_template = require("render")
@@ -17,7 +17,17 @@ local files = {
 		template = "../config/polybar/config.ini.template",
 		output = "../generated/polybar/config.ini",
 		comment_style = "semicolon",
-	}, 
+	},
+	{
+		template = "../config/rofi/config.rasi.template",
+		output = "../generated/rofi/config.rasi",
+		comment_style = "css", 
+	},
+	{
+		template = "../config/desktop/wallpaper.sh.template",
+		output = "../generated/desktop/wallpaper.sh",
+		comment_style = "hash", 
+	},
 }
 
 --[[local generators = {
