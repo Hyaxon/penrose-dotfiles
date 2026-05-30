@@ -5,4 +5,4 @@
 # Edit the source template or theme file instead.
 
 
-feh --bg-fill "/home/hyde/Dev/penrose-dotfiles/wallpapers/eighty_six_red.png"
+feh --bg-fill "/home/hyde/Dev/penrose-dotfiles/wallpapers/fuji_lawson.png"
